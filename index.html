@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <title>WiseShips — Forwarder &amp; Origin Inspection CRM</title>
+    <meta name="description" content="WiseShips CRM helps freight forwarders and origin-inspection teams track containers, coordinate operations, and manage clients, deals, and documents." />
+    <link rel="icon" href="/favicon.ico" sizes="256x256" type="image/x-icon" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-icon.png" />
+    <meta property="og:title" content="WiseShips — Forwarder &amp; Origin Inspection CRM" />
+    <meta property="og:description" content="WiseShips CRM helps freight forwarders and origin-inspection teams track containers, coordinate operations, and manage clients, deals, and documents." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="WiseShips — Forwarder &amp; Origin Inspection CRM" />
+    <meta name="twitter:description" content="WiseShips CRM helps freight forwarders and origin-inspection teams track containers, coordinate operations, and manage clients, deals, and documents." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&family=Geist:wght@100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,200..900;1,8..60,200..900&display=swap" rel="stylesheet" />
+    <script>
+      try {
+        const t = localStorage.getItem('theme') || 'system';
+        const d = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (d) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.style.colorScheme = 'dark';
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.style.colorScheme = 'light';
+        }
+      } catch (e) {}
+    </script>
+  </head>
+  <body class="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-[#2f80ff]/20 selection:text-foreground">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

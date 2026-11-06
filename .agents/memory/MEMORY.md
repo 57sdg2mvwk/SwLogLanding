@@ -1,0 +1,3 @@
+- [WiseShips UI consistency](wiseships-ui-style.md) — extend the existing visual language; avoid introducing new badge colors or component styles.
+- [WiseShips Tools direction](wiseships-tools.md) — grow Tools with the Platform menu pattern; the first tool is a Spanish freight glossary.
+- [ShapeWaves WebGPU support](shapewaves-webgpu.md) — Replit preview may lack a GPU adapter; preserve an animated CSS/SVG fallback.

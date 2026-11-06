@@ -1,0 +1,6 @@
+{
+  "name": "WiseShips - Enterprise Security Platform",
+  "description": "WiseShips unifies enterprise security operations with a premium, accessible platform.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

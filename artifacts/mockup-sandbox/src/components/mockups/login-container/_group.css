@@ -1,0 +1,151 @@
+:root {
+  --background: 0 0% 100%;
+  --foreground: 0 0% 4%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 45%;
+  --border: 0 0% 90%;
+  --font-sans: 'Geist', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: 'Source Serif 4', Georgia, serif;
+}
+
+.login-container-mockup.dark {
+  --background: 0 0% 4%;
+  --foreground: 0 0% 98%;
+  --muted: 0 0% 9%;
+  --muted-foreground: 0 0% 64%;
+  --border: 0 0% 15%;
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  min-height: 100%;
+  margin: 0;
+}
+
+.login-container-mockup {
+  --ws-background: #ffffff;
+  --ws-foreground: #0a0a0a;
+  --ws-border: #e5e5e5;
+}
+
+.login-container-mockup.dark {
+  --ws-background: #0a0a0a;
+  --ws-foreground: #fafafa;
+  --ws-border: #262626;
+}
+
+.cargo-3d-stage {
+  perspective: 680px;
+  perspective-origin: 50% 48%;
+}
+
+.cargo-3d-shell {
+  position: relative;
+  width: 300px;
+  height: 98px;
+  transform-style: preserve-3d;
+}
+
+.cargo-face {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  backface-visibility: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.2);
+}
+
+.cargo-face-front,
+.cargo-face-back {
+  width: 300px;
+  height: 62px;
+}
+
+.cargo-face-front {
+  transform: translate(-50%, -50%) translateZ(24px);
+  background-color: #252529;
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.13), transparent 22%, transparent 83%, rgba(0, 0, 0, 0.25)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.15) 0 1px, transparent 1px 15px);
+}
+
+.cargo-face-back {
+  transform: translate(-50%, -50%) rotateY(180deg) translateZ(24px);
+  background-color: #202024;
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 24%, transparent 80%, rgba(0, 0, 0, 0.28)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.12) 0 1px, transparent 1px 15px);
+}
+
+.cargo-face-side {
+  width: 48px;
+  height: 62px;
+  background-color: #19191d;
+  background-image:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), transparent 28%, rgba(0, 0, 0, 0.2)),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 11px);
+}
+
+.cargo-face-right {
+  transform: translate(-50%, -50%) rotateY(90deg) translateZ(150px);
+}
+
+.cargo-face-left {
+  transform: translate(-50%, -50%) rotateY(-90deg) translateZ(150px);
+}
+
+.cargo-face-top,
+.cargo-face-bottom {
+  width: 300px;
+  height: 48px;
+  background-color: #303035;
+  background-image:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.12), transparent 80%),
+    repeating-linear-gradient(90deg, rgba(255, 255, 255, 0.14) 0 1px, transparent 1px 15px);
+}
+
+.cargo-face-top {
+  transform: translate(-50%, -50%) rotateX(90deg) translateZ(36px);
+}
+
+.cargo-face-bottom {
+  transform: translate(-50%, -50%) rotateX(-90deg) translateZ(36px);
+  background-color: #151519;
+}
+
+.cargo-scan-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 25px;
+  opacity: 0;
+  background: linear-gradient(90deg, transparent, rgba(47, 128, 255, 0.28), transparent);
+  animation: cargo-scan 5.5s ease-in-out infinite;
+}
+
+@keyframes cargo-scan {
+  0%,
+  12% {
+    transform: translateX(-35px);
+    opacity: 0;
+  }
+  35%,
+  68% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateX(300px);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cargo-scan-line {
+    animation: none;
+    display: none;
+  }
+}
