@@ -3,13 +3,13 @@ name: WiseShips UI consistency
 description: The user wants all new or adjusted WiseShips screens to continue the existing product UI style.
 ---
 
-Use existing WiseShips components, spacing, typography, borders, and neutral status treatments when adjusting the UI. Avoid introducing visually separate components or strong color treatments that do not already appear in the surrounding interface.
+Use existing WiseShips components, spacing, typography, borders, and neutral status treatments when adjusting the UI. Preserve the shared page shell and semantic light/dark theme tokens; avoid introducing visually separate components or fixed palettes that disconnect a page from the surrounding interface.
 
 For the Developers code console, use WiseShips near-black and neutral borders with restrained blue accents; reveal sample code progressively, then insert validation logs, while keeping it legible and tall enough to read as a full terminal.
 
 **Why:** The user wants a dark, animated developer terminal that still belongs to the WiseShips interface and has more visual presence.
 
-**How to apply:** Keep the terminal near-black instead of navy, use the site's clipped panel shape and mono typography, sequence code before result logs, and honor reduced-motion preferences.
+**How to apply:** Keep the terminal near-black instead of navy, use the site's clipped panel shape and mono typography, sequence code before result logs, and honor reduced-motion preferences. For page work, retain shared navigation/footer, theme-aware colors, and the site's clipped button and panel geometry.
 
 For the homepage hero, retain a fine, animated, cursor-reactive spike texture between the title and dashboard, without oval outlines.
 

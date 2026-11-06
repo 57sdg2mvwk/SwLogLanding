@@ -56,27 +56,22 @@ export function CutButton({
     );
   }
 
-  // Outline variant with 1px border container
+  // Keep the outline variant on the same fixed-height box as the solid variant.
   const sizeCls = iconOnly ? 'h-10 w-10' : `h-10 ${fullWidth ? 'w-full' : ''}`;
-  const wrapperCls = `inline-flex ${sizeCls} bg-border p-px ${clipPolygon} ${className}`;
-  const innerSize = iconOnly ? 'w-full' : `px-5 ${fullWidth ? 'w-full' : ''}`;
-  const innerCls = `${baseBtn} h-full ${innerSize} ${clipPolygon} bg-background text-foreground hover:bg-muted`;
+  const innerSize = iconOnly ? '' : `px-5 ${fullWidth ? 'w-full' : ''}`;
+  const outlineCls = `${baseBtn} ${sizeCls} ${innerSize} ${clipPolygon} border border-border bg-background text-foreground hover:bg-muted ${className}`;
 
   if (href !== undefined) {
     return (
-      <span style={cutStyle} className={wrapperCls}>
-        <a href={href} style={cutStyle} className={innerCls} onClick={onClick} {...props}>
-          {children}
-        </a>
-      </span>
+      <a href={href} style={cutStyle} className={outlineCls} onClick={onClick} {...props}>
+        {children}
+      </a>
     );
   }
 
   return (
-    <span style={cutStyle} className={wrapperCls}>
-      <button style={cutStyle} className={innerCls} onClick={onClick} {...props}>
-        {children}
-      </button>
-    </span>
+    <button style={cutStyle} className={outlineCls} onClick={onClick} {...props}>
+      {children}
+    </button>
   );
 }

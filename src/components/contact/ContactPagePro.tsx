@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import {
   ArrowDown,
   ArrowUpRight,
@@ -6,12 +6,15 @@ import {
   Mail,
   MessageCircle,
   MoveUpRight,
-  Ship,
   Waypoints,
 } from 'lucide-react';
 import { motion, useReducedMotion } from 'motion/react';
-import { ContactPortIllustration } from './ContactPortIllustration';
+import { contactScene } from './contact-scene-data';
 import './contact-page.css';
+
+const ContainerLoadScene = lazy(() =>
+  import('../ContainerLoadScene').then(({ ContainerLoadScene: Scene }) => ({ default: Scene })),
+);
 
 const whatsappMessage =
   'Hola, me gustaría agendar una reunión para conocer cómo usar el CRM de WiseShips.';
@@ -85,13 +88,44 @@ export function ContactPagePro() {
               <span>Freight forwarders</span><span>Inspección en origen</span>
             </div>
           </motion.div>
+
           <motion.div
             className="ws-art-wrap"
             initial={reduceMotion ? false : { opacity: 0, y: 22 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.1, ease }}
           >
-            <ContactPortIllustration />
+            <div className="ws-scene-card">
+              <div className="ws-scene-heading">
+                <span><span className="ws-status-dot" /> VISTA DE PLANIFICACIÓN</span>
+                <span>01 / CARGA</span>
+              </div>
+              <div className="ws-scene-stage">
+                <Suspense
+                  fallback={
+                    <div className="ws-scene-loading" role="status" aria-label="Preparando visualización 3D">
+                      <span className="ws-scene-skeleton" />
+                      <span>Preparando vista 3D</span>
+                    </div>
+                  }
+                >
+                  <ContainerLoadScene
+                    container={contactScene.container}
+                    placements={contactScene.placements}
+                    visibleCount={contactScene.placements.length}
+                    className="ws-load-scene"
+                  />
+                </Suspense>
+              </div>
+              <div className="ws-scene-meta">
+                <span>Distribución de carga · ejemplo</span>
+                <span>{contactScene.container.shortName}</span>
+              </div>
+            </div>
+            <div className="ws-art-note">
+              <span className="ws-art-note-mark"><Waypoints size={15} strokeWidth={1.7} aria-hidden="true" /></span>
+              <span>Un mismo registro para cada traspaso operativo.</span>
+            </div>
           </motion.div>
           <a href="#contact-channels" className="ws-scroll" aria-label="Ver canales de contacto">
             <ArrowDown size={15} aria-hidden="true" />
@@ -129,34 +163,36 @@ export function ContactPagePro() {
             </div>
             <p>Elige el canal que mejor le funcione a tu equipo. Nuestro horario está en tiempo de Ciudad de México.</p>
           </motion.div>
-          <div className="ws-channel-list">
-            <ContactChannel
-              number="01"
-              icon={<MessageCircle size={19} strokeWidth={1.6} aria-hidden="true" />}
-              label="WhatsApp"
-              value="+52 56 5384 8838"
-              detail="Coordina una reunión directamente con el equipo."
-              href={whatsappHref}
-              external
-            />
-            <ContactChannel
-              number="02"
-              icon={<Mail size={19} strokeWidth={1.6} aria-hidden="true" />}
-              label="Correo electrónico"
-              value="support@wiseships.com"
-              detail="Escríbenos sobre soporte, producto o una primera conversación."
-              href="mailto:support@wiseships.com"
-            />
-          </div>
-          <div className="ws-hours">
-            <Clock3 className="ws-hours-icon" size={19} strokeWidth={1.6} aria-hidden="true" />
-            <div className="ws-hours-content">
-              <div>
-                <span className="ws-hours-label">Horario de atención</span>
-                <strong>Lunes a viernes, 9:00 a. m.–6:00 p. m.</strong>
-              </div>
-              <span className="ws-hours-timezone">Zona horaria: America/Mexico_City</span>
+          <div className="ws-contact-layout">
+            <div className="ws-channel-list">
+              <ContactChannel
+                number="01"
+                icon={<MessageCircle size={19} strokeWidth={1.6} aria-hidden="true" />}
+                label="WhatsApp"
+                value="+52 56 5384 8838"
+                detail="Coordina una reunión directamente con el equipo."
+                href={whatsappHref}
+                external
+              />
+              <ContactChannel
+                number="02"
+                icon={<Mail size={19} strokeWidth={1.6} aria-hidden="true" />}
+                label="Correo electrónico"
+                value="support@wiseships.com"
+                detail="Escríbenos sobre soporte, producto o una primera conversación."
+                href="mailto:support@wiseships.com"
+              />
             </div>
+            <aside className="ws-hours" aria-label="Horario de atención">
+              <div className="ws-hours-top">
+                <span className="ws-hours-icon"><Clock3 size={19} strokeWidth={1.6} aria-hidden="true" /></span>
+                <span className="ws-hours-label">Horario de atención</span>
+              </div>
+              <strong>Lunes a viernes,<br />9:00 a. m.–6:00 p. m.</strong>
+              <span className="ws-hours-timezone">Zona horaria<br /><b>America/Mexico_City</b></span>
+              <span className="ws-hours-rule" aria-hidden="true" />
+              <p>Te responderá una persona del equipo, en horario local.</p>
+            </aside>
           </div>
         </section>
       </main>
